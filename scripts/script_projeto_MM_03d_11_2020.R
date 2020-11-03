@@ -65,7 +65,16 @@ dim(lobo_sp)
 puma_sp <- neo_sp[neo_sp$SPECIES == "Puma concolor", ]
 puma_sp
 
+#fazer o mapa com os pontos de localização da puma concolor
+box <- make_bbox(LONG_X,LAT_Y, data = puma_sp)
 
+
+map2 <-ggmap(get_map(location = box, maptype="toner", source="stamen")
+) +
+  geom_point(data=puma_sp, x=puma_sp$LONG_X, y=puma_sp$LAT_Y, color="blue")
+map
+
+plot(map2)
 
 summary (puma_sp)
 dim(puma_sp)
