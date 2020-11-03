@@ -41,11 +41,21 @@ summary (neo_sp)
 lobo_sp <- neo_sp[neo_sp$SPECIES == "Chrysocyon brachyurus", ]
 lobo_sp
 
+require(RgoogleMaps)
+require(ggplot2)
+require(ggmap)
 
-require(spatstat)
+#fazer o mapa com os pontos de localização do lobo
+box <- make_bbox(LONG_X,LAT_Y, data = lobo_sp)
 
-ppplobo_sp<-ppp(lobo_sp$LONG_X,lobo_sp$LAT_Y)
-plot(ppplobo_sp)
+
+map <-ggmap(get_map(location = box, maptype="toner", source="stamen")
+) +
+  geom_point(data=lobo_sp, x=lobo_sp$LONG_X, y=lobo_sp$LAT_Y, color="red")
+map
+
+plot(map)
+
 
 summary (lobo_sp)
 dim(lobo_sp)
@@ -55,8 +65,7 @@ dim(lobo_sp)
 puma_sp <- neo_sp[neo_sp$SPECIES == "Puma concolor", ]
 puma_sp
 
-ppppuma_sp<-ppp(puma_sp$LONG_X,puma_sp$LAT_Y)
-plot(ppppuma_sp)
+
 
 summary (puma_sp)
 dim(puma_sp)
