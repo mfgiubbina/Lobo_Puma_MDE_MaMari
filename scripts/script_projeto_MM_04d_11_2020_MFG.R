@@ -44,12 +44,6 @@ summary (neo_sp)
 lobo_sp <- neo_sp[neo_sp$SPECIES == "Chrysocyon brachyurus", ]
 lobo_sp
 
-
-require(spatstat)
-
-ppplobo_sp<-ppp(lobo_sp$LONG_X,lobo_sp$LAT_Y)
-plot(ppplobo_sp)
-
 plot(lobo_sp)
 
 summary (lobo_sp)
@@ -60,8 +54,6 @@ dim(lobo_sp)
 puma_sp <- neo_sp[neo_sp$SPECIES == "Puma concolor", ]
 puma_sp
 
-ppppuma_sp<-ppp(puma_sp$LONG_X,puma_sp$LAT_Y)
-plot(ppppuma_sp)
 
 summary (puma_sp)
 dim(puma_sp)
